@@ -1,8 +1,8 @@
-if (!NFCReader) {
+if (!NDEFReader) {
   pre.innerHTML += `<font color="red">Error: ${error}</font>\n`;
 }
 
-const r = new NFCReader();
+const r = new NDEFReader();
 
 r.onerror = event => {
   pre.innerHTML += "<font color='red'>Error: " + event.error + "</font>\n";
@@ -147,7 +147,7 @@ pushRecordType.onchange = () => {
 
 writeButton.addEventListener("click", async _ => {
   pre.innerHTML += "<b>Start writing...</b>\n";
-  const w = new NFCWriter();
+  const w = new NDEFWriter();
   let newMessage = null;
   if (NDEFMessageSource.value ===  "DOMString") {
     newMessage = pushMessage.value;
@@ -166,7 +166,7 @@ writeButton.addEventListener("click", async _ => {
     newMessage = JSON.parse(pushMessage.value);
   }
   try {
-    await w.push(
+    await w.write(
       newMessage,
       {
         target: target.value,

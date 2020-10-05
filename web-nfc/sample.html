@@ -5,7 +5,7 @@
   </head>
   <body>
     <h1>
-       WebNFC
+       WebNFC FIXED
     </h1>
     <h3>
        NFCPushOptions
@@ -102,7 +102,7 @@
     <iframe src="iframe.html" style="display:block; height: 64px; margin-top: 12px"></iframe>
     <pre id="pre" style="overflow: auto; padding: 0 12px 12px 0"></pre>
     <script>
-      if ('NFCReader' in window) {
+      if ('NDEFReader' in window) {
         import("./script.js");
       } else {
         pre.innerHTML = '<b>No WebNFC support!</b>\n';
