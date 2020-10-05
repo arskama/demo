@@ -1,8 +1,8 @@
-if (!NFCReader) {
+if (!NDEFReader) {
   pre.textContent += `Error: ${error}\n`;
 }
 
-const r = new NFCReader();
+const r = new NDEFReader();
 
 r.onerror = event => {
   pre.textContent += "Error: " + event.error + "\n";
@@ -136,7 +136,7 @@ const test_buffer_view =
     new Uint8Array(test_buffer_data).set(test_text_byte_array);
 writeButton.addEventListener("click", async _ => {
   pre.textContent += "Writing...\n";
-  const w = new NFCWriter();
+  const w = new NDEFWriter();
   let newMessage = null;
   if (pushRecordType.value ===  "opaque") {
     newMessage = { records: [{ recordType: "opaque", data: test_buffer_data,
@@ -145,7 +145,7 @@ writeButton.addEventListener("click", async _ => {
     newMessage = JSON.parse(pushMessage.value);
   }
   try {
-    await w.push(
+    await w.write(
       newMessage,
       {
         target: target.value,
