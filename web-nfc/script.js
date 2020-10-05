@@ -12,6 +12,7 @@ r.onreading = ({ message }) => {
   pre.innerHTML += `<br>> <font color='green'>Reading from ${event.serialNumber}</font>\n`;
   pre.innerHTML += `> <font color='green'>Records:</font>\n`;
 
+  console.error("Here I am");
   if (message.records.length === 0) {
     pre.innerHTML += `  > <font color='green'>No WebNFC records</font>\n`;
     return;
@@ -63,12 +64,15 @@ abortButton.addEventListener("click", _ => {
 });
 
 scanButton.addEventListener("click", _ => {
+  console.error("Here I am");
   pre.innerHTML += "<b>Start scanning...</b>\n";
   if (recordType.value === "---") {
     r.scan({
       signal: abortController.signal,
-      id: scanId.value,
-      mediaType: mediaType.value
+      id: "http://www.intel.com",
+      mediaType: "text/plain"
+//      id: scanId.value,
+//      mediaType: mediaType.value
     });
   } else {
     r.scan({
